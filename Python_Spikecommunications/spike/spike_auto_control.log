@@ -1,0 +1,166 @@
+
+MicroPython v1.20.0-544-g977dc9a36 on 2023-11-22; SPIKE Prime with STM32F413
+Type "help()" for more information.
+>>> 
+MPY: sync filesystems
+MPY: soft reboot
+
+MicroPython v1.20.0-544-g977dc9a36 on 2023-11-22; SPIKE Prime with STM32F413
+Type "help()" for more information.
+>>> motor_traccion.dc(velocidad_traccion)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'motor_traccion' isn't defined
+>>> from pybricks.hubs import PrimeHub
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: no module named 'pybricks'
+>>> from pybricks.pupdevices import Motor
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: no module named 'pybricks'
+>>> from pybricks.parameters import Port
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: no module named 'pybricks'
+>>> from pybricks.tools import wait
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: no module named 'pybricks'
+>>> import sys
+>>> 
+>>> # Motor B: Traccion (grande)
+>>> # Motor D: Direccion (mediano)
+>>> 
+>>> def limpiar_recursos_ackermann(motor_traccion_obj=None, motor_direccion_obj=None):
+...        print("\nLimpiando recursos Ackermann...")
+...     try:
+...         if motor_traccion_obj:
+...             motor_traccion_obj.brake()
+...         if motor_direccion_obj:
+...             motor_direccion_obj.brake()
+...         print("Motores Ackermann detenidos y recursos liberados.")
+...     except Exception as e:
+...         print(f"Error al limpiar recursos Ackermann: {e}")
+... 
+>>> print("Iniciando rutina Ackermann: Avanzar...")
+Iniciando rutina Ackermann: Avanzar...
+>>> motor_traccion = None
+>>> motor_direccion = None
+>>> 
+>>> try:
+...        hub = PrimeHub()
+...     print("Hub inicializado.")
+... 
+Traceback (most recent call last):
+  File "<stdin>", line 4
+SyntaxError: invalid syntax
+>>>     print("Inicializando motor de traccion (Puerto B)...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     motor_traccion = Motor(Port.B)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     print("Motor de traccion inicializado.")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     print("Inicializando motor de direccion (Puerto D)...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     motor_direccion = Motor(Port.D)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     print("Motor de direccion inicializado.")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     print("Iniciando secuencia de movimiento Ackermann.")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     print("Asegurando motor de direccion (D)...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     motor_direccion.brake()
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     wait(500)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     velocidad_traccion = 50
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     tiempo_avance_ms = 5000
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     print(f"Moviendo motor de traccion (B) adelante al {velocidad_traccion}% durante {tiempo_avance_ms / 1000}s...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     motor_traccion.dc(velocidad_traccion)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     wait(tiempo_avance_ms)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     print("Deteniendo motor de traccion (B)...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     motor_traccion.brake()
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     wait(500)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>>     print("Rutina de avance Ackermann completada.")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>> except Exception as e:
+Traceback (most recent call last):
+  File "<stdin>", line 1
+SyntaxError: invalid syntax
+>>>     print(f"\nError durante la rutina Ackermann: {e}")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> finally:
+Traceback (most recent call last):
+  File "<stdin>", line 1
+SyntaxError: invalid syntax
+>>>     print("Ejecutando limpieza final Ackermann...")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     limpiar_recursos_ackermann(motor_traccion, motor_direccion)
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>>     print("Script Python Ackermann finalizado.")
+Traceback (most recent call last):
+  File "<stdin>", line 1
+IndentationError: unexpected indent
+>>> 
+>>> 
