@@ -5,6 +5,7 @@ import serial
 import time
 """Added simplified script, originated from "interpreter_startup.py", starting here:"""
 import subprocess
+#import time (Already imported above)
 import os
 import pty
 
@@ -64,25 +65,25 @@ def initialize_Libraries():
     #declare functions for motors
     spike.write("def fr():\r".encode())
     spike.readline() #clear buffer 
-    spike.write("motor.stop(port.F, stop = motor.HOLD)\r".encode())
+    spike.write("motor.stop(port.A, stop = motor.HOLD)\r".encode())
     spike.readline() #clear buffer 
-    spike.write("motor.stop(port.B, stop = motor.HOLD)\r".encode())
+    spike.write("motor.stop(port.E, stop = motor.HOLD)\r".encode())
     spike.readline() #clear buffer
-    spike.write("distancias = [distance_sensor.distance(port.C), distance_sensor.distance(port.A), distance_sensor.distance(port.E)]\r".encode())
+    spike.write("distancias = [distance_sensor.distance(port.C), distance_sensor.distance(port.B), distance_sensor.distance(port.F)]\r".encode())
     spike.readline() #clear buffer
     end_Function()
 
     spike.write("def fc():\r".encode())
     spike.readline() #clear buffer 
-    spike.write("motor.stop(port.F, stop = motor.COAST)\r".encode())
+    spike.write("motor.stop(port.A, stop = motor.COAST)\r".encode())
     spike.readline() #clear buffer 
-    spike.write("motor.stop(port.B, stop = motor.COAST)\r".encode())
+    spike.write("motor.stop(port.E, stop = motor.COAST)\r".encode())
     spike.readline() #clear buffer
     end_Function()
     # centrar el vehiculo 
     spike.write("def cv():\r".encode())
     spike.readline() #clear buffer 
-    spike.write("motor.run_to_absolute_position(port.F, 0, 550,\r".encode())
+    spike.write("motor.run_to_absolute_position(port.E, 0, 550,\r".encode())
     spike.readline()#clear buffemotor.stop(port.F, stop = motor.COAST)r
     spike.write("direction = motor.SHORTEST_PATH, stop = motor.HOLD, acceleration = 1000, deceleration = 1000)\r".encode())
     spike.readline() #clear buffer
@@ -97,10 +98,9 @@ def initialize_Libraries():
     spike.readline()#clear buffer
     spike.write("et= (kp*error) + (kd*(error-ea))\r".encode()) #et es error total
     spike.readline()#clear buffer
+    spike.write("motor.run_to_absolute_position(port.E, int(et), 550, direction = motor.SHORTEST_PATH)\r".encode())
     spike.readline() #clear buffer
-    spike.write("motor.run_to_absolute_position(port.F, int(et), 300, direction = motor.SHORTEST_PATH, stop = motor.BRAKE, acceleration = 10000)\r".encode())
-    spike.readline() #clear buffer
-    spike.write("motor.set_duty_cycle(port.B, (-100)*(vel))\r".encode())
+    spike.write("motor.set_duty_cycle(port.A, (100)*(vel))\r".encode())
     spike.readline() #clear buffer
     spike.write("return error\r".encode())
     spike.readline() #clear buffer
@@ -118,13 +118,11 @@ def initialize_Libraries():
     spike.readline() #clear buffer
     spike.write("error = 0\r".encode())
     spike.readline() #clear buffer
-    spike.write("while 0 > distance_sensor.distance(port.C) or distance_sensor.distance(port.C) >((10)*(distancia)):\r".encode())
+    spike.write("while 0 > distance_sensor.distance(port.C) or distance_sensor.distance(port.C) > distancia:\r".encode())
     spike.readline() #clear buffer
-    spike.write("error = pd(((10)*(referencia)),motion_sensor.tilt_angles()[0],vel,0.3,1,error)\r".encode())
+    spike.write("error = pd(referencia,motion_sensor.tilt_angles()[0],vel,0.3,1,error)\r".encode())
     spike.readline() #clear buffer
-    spike.write(chr(127).encode())  #suprimir linea
-    spike.readline() #clear buffer 
-    spike.write("fc()\r".encode())   
+    spike.write(chr(127).encode()) #suprimir linea
     spike.readline() #clear buffer
     spike.write("return 255\r".encode())
     spike.readline() #clear buffer
@@ -133,36 +131,34 @@ def initialize_Libraries():
 
     spike.write("def vuelta(direccion,velocidad,grados):\r".encode())
     spike.readline() #clear buffer
-    spike.write("motor.run_to_absolute_position(port.F, 49*(direccion), 550, direction = motor.SHORTEST_PATH)\r".encode())
+    spike.write("motor.run_to_absolute_position(port.E, 49*(direccion), 550, direction = motor.SHORTEST_PATH)\r".encode())
     spike.readline() #clear buffer
-    spike.write("while abs(grados*10) > abs(motion_sensor.tilt_angles()[0]) and abs(grados*10) == abs(motion_sensor.tilt_angles()[0]):\r".encode())
+    spike.write("while abs(grados*10) > abs(motion_sensor.tilt_angles()[0]):\r".encode())
     spike.readline() #clear buffer
-    spike.write("motor.set_duty_cycle(port.B, (-100)*(velocidad))\r".encode())
+    spike.write("motor.set_duty_cycle(port.A, (100)*velocidad)\r".encode())
     spike.readline() #clear buffer
     spike.write(chr(127).encode()) #suprimir linea
-    spike.readline() #clear buffer
-    spike.write("fc()\r".encode())   
     spike.readline() #clear buffer
     spike.write("return 255\r".encode())
     spike.readline() #clear buffer
     end_Function()
     end_Function()
 
-    spike.write("def da(vel, referencia):\r".encode())
+    spike.write("def da(vel):\r".encode())
     spike.readline() #clear buffer
-    spike.write("ulz = distance_sensor.distance(port.A)\r".encode())
+    spike.write("ulz = distance_sensor.distance(port.B)\r".encode())
     spike.readline() #clear buffer
-    spike.write("uld = distance_sensor.distance(port.E)\r".encode())
+    spike.write("uld = distance_sensor.distance(port.F)\r".encode())
     spike.readline() #clear buffer
     spike.write("error = 0\r".encode())
     spike.readline() #clear buffer
     spike.write("while ulz > 0 and uld > 0:\r".encode())
     spike.readline() #clear buffer
-    spike.write("error = pd(referencia,motion_sensor.tilt_angles()[0],vel,0.3,1,error)\r".encode())
+    spike.write("error = pd(0,motion_sensor.tilt_angles()[0],vel,0.3,1,error)\r".encode())
     spike.readline() #clear buffer
-    spike.write("ulz = distance_sensor.distance(port.A)\r".encode())
+    spike.write("ulz = distance_sensor.distance(port.B)\r".encode())
     spike.readline() #clear buffer
-    spike.write("uld = distance_sensor.distance(port.E)\r".encode())
+    spike.write("uld = distance_sensor.distance(port.F)\r".encode())
     spike.readline() #clear buffer
     spike.write(chr(127).encode()) #suprimir linea
     spike.readline() #clear buffer
@@ -175,9 +171,9 @@ def initialize_Libraries():
 
     spike.write("def va(vel, grados):\r".encode())
     spike.readline() #clear buffer
-    spike.write("ulz = distance_sensor.distance(port.A)\r".encode())
+    spike.write("ulz = distance_sensor.distance(port.B)\r".encode())
     spike.readline() #clear buffer
-    spike.write("uld = distance_sensor.distance(port.E)\r".encode())
+    spike.write("uld = distance_sensor.distance(port.F)\r".encode())
     spike.readline() #clear buffer
     spike.write("der = -1\r".encode())
     spike.readline() #clear buffer
@@ -192,25 +188,6 @@ def initialize_Libraries():
     spike.write("if uld == -1:\r".encode())
     spike.readline() #clear buffer
     spike.write("vuelta(der,vel,grados)\r".encode())
-    spike.readline() #clear buffer
-    spike.write(chr(127).encode()) #suprimir linea
-    spike.readline() #clear buffer
-    spike.write("fc()\r".encode())
-    spike.readline() #clear buffer
-    spike.write("return 255\r".encode())
-    spike.readline() #clear buffer
-    end_Function()
-    end_Function()
-
-    spike.write("def ag(vel,grados,referencia):\r".encode())
-    spike.readline() #clear buffer
-    spike.write("error = 0\r".encode())
-    spike.readline() #clear buffer
-    spike.write("motor.reset_relative_position(port.B,0)\r".encode())
-    spike.readline() #clear buffer
-    spike.write("while abs(grados) > abs(motor.relative_position(port.B)):\r".encode())
-    spike.readline() #clear buffer
-    spike.write("error = pd(((10)*(referencia)),motion_sensor.tilt_angles()[0],vel,1.05,100,error)\r".encode())
     spike.readline() #clear buffer
     spike.write(chr(127).encode()) #suprimir linea
     spike.readline() #clear buffer
@@ -272,8 +249,8 @@ def vuelta_grados(direccion,velocidad,grados):
     print("Fin de la vuelta")
     Coast_motors()
 
-def avanzar_detection(vel,referencia):
-    spike.write(("da("+str(vel)+","+str(referencia)+")\r").encode())
+def avanzar_detection(vel):
+    spike.write(("da("+str(vel)+")\r").encode())
     spike.readline() #clear buffer
     return_value = spike.readline().decode()
     if return_value == "":
@@ -285,22 +262,8 @@ def avanzar_detection(vel,referencia):
     print("Fin de la deteccion")
     Coast_motors()
 
-def vuelta_automatica(velocidad, grados):
-    spike.write(("va("+str(velocidad)+","+str(grados)+")\r").encode())
-    spike.readline() #clear buffer
-    return_value = spike.readline().decode()
-    if return_value == "":
-        return_value = "0"
-    while int(return_value) != 255:
-        return_value = spike.readline().decode()
-        if return_value == "":
-            return_value = "0"
-    print("Fin de la vuelta")
-    Coast_motors()
-    
-
-def avanzar_recto_grados(velocidad,grados,referencia):
-    spike.write(("ag("+str(velocidad)+","+str(grados)+","+str(referencia)+")\r").encode())
+def vuelta_automatica(vel,grados):
+    spike.write(("va("+str(vel)+","+str(grados)+")\r").encode())
     spike.readline() #clear buffer
     return_value = spike.readline().decode()
     if return_value == "":
@@ -315,8 +278,22 @@ def avanzar_recto_grados(velocidad,grados,referencia):
 try:# Main Program
     initialize_Libraries()
     i = 0
-    reset_gyro(0)
-    avanzar_recto_grados(60,9000,0)
+    while i < 8:
+        i = i + 1
+    #    reset_gyro()
+    #    avanzar_distancia(90,780)
+    #    vuelta_grados(der,60,90)
+    #   Free_spikeDirection()
+    #   reset_gyro()
+    #time.sleep(0.050)
+        reset_gyro(0)
+        avanzar_detection(70)
+        vuelta_automatica(60,91)
+        reset_gyro(0)
+        avanzar_distancia(70,780,-90)
+
+    #Coast_motors() #brake all motors
+    #spike.close() #close serial connection
 
 except KeyboardInterrupt:
     print("\nProgram interrupted! Cleaning up...")
