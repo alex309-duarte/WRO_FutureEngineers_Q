@@ -1,0 +1,1 @@
+The previously built Ackerman systems began to be implemented and tests were carried out to decide which one to use.  ![Photos/Photos of the national/Ackerman system/IMG-20250718-WA0009.jpg](https://github.com/alex309-duarte/WRO_FutureEngineers_Q/blob/main/Photos/Photos%20of%20the%20national/Ackerman%20system/IMG-20250718-WA0009.jpg)
