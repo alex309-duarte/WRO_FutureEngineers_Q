@@ -1,1 +1,1 @@
-During these two days we have only organized our Git Hub repository and kept the engineering journal
+During these two days we have only organized our Git Hub repository and kept the engineering journal. We have also designed [a piece](https://github.com/alex309-duarte/WRO_FutureEngineers_Q/blob/main/3D%20pieces/Soporte%20del%20Boton.gcode) that will be used to place the new on/off button.
