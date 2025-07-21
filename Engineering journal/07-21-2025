@@ -2,7 +2,10 @@ Date: 07/21/2025
 
 Entry:
 
-Today, we worked on installing and testing the MPU-9250 gyroscope. We started programming it to ensure proper functionality. The initial steps included calibrating the sensor and establishing communication with the microcontroller.
+Today, we worked on installing and testing the MPU-9250 gyroscope. We started programming it to ensure proper functionality.
+The initial steps included calibrating the sensor and establishing communication with the microcontroller.
 
-This process is crucial for our project, as the MPU-9250 gyroscope provides essential orientation and motion data. We are now in the early stages of developing the code for data acquisition and processing routines, which will allow us to utilize the gyroscope effectively in our system.
+This process is crucial for our project, as the MPU-9250 gyroscope provides essential orientation and motion data.
+We are now in the early stages of developing the code for data acquisition and processing routines,
+which will allow us to utilize the gyroscope effectively in our system.
 
