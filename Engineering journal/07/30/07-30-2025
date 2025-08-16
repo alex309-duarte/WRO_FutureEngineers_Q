@@ -1,0 +1,13 @@
+Date: 07/30/2025
+
+Entry:
+
+Today we worked on referencing the RPLidar A1 sensor to measure straight-line movement accuracy against wall surfaces. The system successfully detected angular deviations and maintained consistent distance measurements. We collected precise data on navigation drift which will be used for tomorrow's trigonometric corrections. Simultaneously, we began preliminary work on implementing threaded processing for the LiDAR data to improve real-time performance.
+
+-------------------------------------------
+
+Fecha: 30/07/2025
+
+Registro:
+
+Hoy trabajamos en la referencia del sensor RPLidar A1 para medir la precisión del movimiento en línea recta contra superficies de pared. El sistema detectó con éxito desviaciones angulares y mantuvo mediciones de distancia consistentes. Recopilamos datos precisos sobre la deriva en la navegación que se utilizarán para las correcciones trigonométricas de mañana. Simultáneamente, comenzamos el trabajo preliminar para implementar el procesamiento por hilos de los datos LiDAR y mejorar el rendimiento en tiempo real.
