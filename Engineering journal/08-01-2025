@@ -1,0 +1,13 @@
+Date: 08/01/2025
+
+Entry:
+
+Today we began working with the VL53L1X time-of-flight (ToF) distance sensors. The initial setup involved importing and configuring the necessary libraries to establish communication between the sensors and our microcontroller. We tested basic ranging functionality and verified the sensors' ability to measure distances up to 4 meters with millimeter-level precision. This marks the first step in integrating these high-accuracy sensors into our navigation system.
+
+------------------------------------------------------------------------------
+
+Fecha: 01/08/2025
+
+Registro:
+
+Hoy comenzamos a trabajar con los sensores de distancia VL53L1X (Time-of-Flight/ToF). La configuración inicial incluyó la importación y configuración de las librerías necesarias para establecer comunicación entre los sensores y nuestro microcontrolador. Probamos la funcionalidad básica de medición y verificamos que los sensores pueden medir distancias de hasta 4 metros con precisión a nivel milimétrico. Este es el primer paso para integrar estos sensores de alta precisión a nuestro sistema de navegación.
