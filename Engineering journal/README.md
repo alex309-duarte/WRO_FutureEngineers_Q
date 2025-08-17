@@ -4,4 +4,10 @@
 
 In this folder you will find all the progress prior to the WRO Mexico national competition.
 
+----------------------------------------------------------------------
 
+#Diario de Ingeniería
+
+##Propósito
+
+En esta carpeta encontrarás todo el progreso previo a la competencia nacional de la WRO México.
