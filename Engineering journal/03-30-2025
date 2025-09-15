@@ -1,0 +1,13 @@
+Date: 08/30/2025
+
+Entry:
+
+Today, significant progress was made in finalizing the code for both competition challenges. The team focused on optimizing the navigation algorithms and enhancing the integration of sensor data from the VL53L1X Time-of-Flight sensors and the RPLidar A1. Multiple test runs were conducted to ensure the system operates reliably under competition conditions, with adjustments made to improve obstacle detection accuracy and path planning efficiency. The codebase was refined for stability, and all components are now functioning as expected. Final checks and performance evaluations will continue to ensure readiness for the competition.
+
+-------------------------------------------
+
+Fecha: 30/08/2025
+
+Registro:
+
+Hoy se realizaron avances significativos en la finalización del código para ambos desafíos de competencia. El equipo se enfocó en optimizar los algoritmos de navegación y mejorar la integración de datos de los sensores VL53L1X (Time-of-Flight) y el RPLidar A1. Se llevaron a cabo múltiples pruebas para garantizar que el sistema opere de manera confiable bajo condiciones de competencia, realizando ajustes para mejorar la precisión en la detección de obstáculos y la eficiencia en la planificación de rutas. El código se refinó para mayor estabilidad, y todos los componentes ahora funcionan como se esperaba. Las verificaciones finales y evaluaciones de rendimiento continuarán para asegurar la preparación para la competencia.
