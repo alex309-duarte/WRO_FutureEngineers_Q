@@ -36,85 +36,86 @@ The central computer that controls the robot's logic is the Raspberry Pi 5, whic
 
 --------------------------------------
 
-Este repositorio contiene toda la documentación histórica para construir un vehículo autónomo para la categoría Future Engineers de la WRO.
-
-Lista de materiales para construir tu robot
-Spike Prime
-
-Raspberry Pi 5
-
-Visualización del modelo 3D
-Para ver el modelo 3D del robot:
-
-Instala Studio desde:
-https://www.bricklink.com/v3/studio/download.page
-
-El modelo está en la ruta:
-/Robot 3D model
-
-Sistema de detección de límites
-Se utilizan 3 sensores ultrasónicos para detectar paredes y obstáculos en el campo de juego.
-
-Reconocimiento de semáforos
-Cámara: Luxonis OAK-D-Lite
-
-Modelo de IA: YOLOV8
-
-La cámara carga modelos de entrenamiento para detección de objetos
-
-Devuelve imágenes con las detecciones identificadas
-
-Entrenamiento del modelo YOLOV8
-Dataset:
-
-Captura de imágenes del campo de juego
-
-Etiquetado:
-
-Herramienta: Label-Studio
-
-Formato de exportación: Yolo
-
-Entrenamiento:
-
-Plataforma: Google Colab
-
-GPU acelerada
-
-Enlace:
-https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb
-
-Tiempo estimado: Horas (para 1,000 imágenes)
-
-Conversión del modelo
-Utilizar la herramienta de Luxonis para convertir modelos YOLO a formato compatible con la cámara.
-
-Ejemplos disponibles en la documentación de Luxonis.
-
-Control de movimiento
-Controlador principal: Spike Prime Hub
-
-Kit robótico con motores y sensores
-
-Funciones clave:
-
-Control de motores
-
-Giroscopio interno para navegación
-
-Integración con sensores ultrasónicos
-
-Unidad central de procesamiento
-Raspberry Pi 5
-
-Procesa datos de la cámara
-
-Ejecuta la lógica principal del robot
-
-Comunica instrucciones al Spike Prime via:
-
-USB
-
-Protocolo serie personalizado
-
+# Este repositorio contiene toda la documentación histórica para construir un vehículo autónomo para la categoría Future Engineers de la WRO.
+  
+  ## Lista de materiales para construir tu robot
+  
+  >Spike Prime
+  
+  >Raspberry Pi 5
+  
+  >Visualización del modelo 3D
+  >Para ver el modelo 3D del robot:
+  
+  >Instala Studio desde:
+  >https://www.bricklink.com/v3/studio/download.page
+  
+  >El modelo está en la ruta:
+  >/Robot 3D model
+  
+  >Sistema de detección de límites
+  >Se utilizan 3 sensores ultrasónicos para detectar paredes y obstáculos en el campo de juego.
+  
+  >Reconocimiento de semáforos
+  >Cámara: Luxonis OAK-D-Lite
+  
+   ## Modelo de IA: YOLOV8
+  
+  >La cámara carga modelos de entrenamiento para detección de objetos
+  
+  >Devuelve imágenes con las detecciones identificadas
+  
+  >Entrenamiento del modelo YOLOV8
+  >Dataset:
+  
+  >Captura de imágenes del campo de juego
+  
+  ## Etiquetado:
+  
+  >Herramienta: Label-Studio
+  
+  >Formato de exportación: Yolo
+  
+  ## Entrenamiento:
+  
+  >Plataforma: Google Colab
+  
+  >GPU acelerada
+  
+  >Enlace:
+  >https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb
+  
+  >Tiempo estimado: Horas (para 1,000 imágenes)
+  
+  >Conversión del modelo
+  >Utilizar la herramienta de Luxonis para convertir modelos YOLO a formato compatible con la cámara.
+  
+  >Ejemplos disponibles en la documentación de Luxonis.
+  
+  >Control de movimiento
+  >Controlador principal: Spike Prime Hub
+  
+  >Kit robótico con motores y sensores
+  
+  ## Funciones clave:
+  
+  >Control de motores
+  
+  >Giroscopio interno para navegación
+  
+  >Integración con sensores ultrasónicos
+  
+  >Unidad central de procesamiento
+  >Raspberry Pi 5
+  
+  >Procesa datos de la cámara
+  
+  >Ejecuta la lógica principal del robot
+  
+  >Comunica instrucciones al Spike Prime via:
+  
+  >USB
+  
+  >Protocolo serie personalizado
+  
 
