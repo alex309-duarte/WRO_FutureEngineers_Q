@@ -36,86 +36,41 @@ The central computer that controls the robot's logic is the Raspberry Pi 5, whic
 
 --------------------------------------
 
-# Este repositorio contiene toda la documentación histórica para construir un vehículo autónomo para la categoría Future Engineers de la WRO.
-  
-  ## Lista de materiales para construir tu robot
-  
-  >Spike Prime
-  
-  >Raspberry Pi 5
-  
-  >Visualización del modelo 3D
-  >Para ver el modelo 3D del robot:
-  
-  >Instala Studio desde:
-  >https://www.bricklink.com/v3/studio/download.page
-  
-  >El modelo está en la ruta:
-  >/Robot 3D model
-  
-  >Sistema de detección de límites
-  >Se utilizan 3 sensores ultrasónicos para detectar paredes y obstáculos en el campo de juego.
-  
-  >Reconocimiento de semáforos
-  >Cámara: Luxonis OAK-D-Lite
-  
-   ## Modelo de IA: YOLOV8
-  
-  >La cámara carga modelos de entrenamiento para detección de objetos
-  
-  >Devuelve imágenes con las detecciones identificadas
-  
-  >Entrenamiento del modelo YOLOV8
-  >Dataset:
-  
-  >Captura de imágenes del campo de juego
-  
-  ## Etiquetado:
-  
-  >Herramienta: Label-Studio
-  
-  >Formato de exportación: Yolo
-  
-  ## Entrenamiento:
-  
-  >Plataforma: Google Colab
-  
-  >GPU acelerada
-  
-  >Enlace:
-  >https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb
-  
-  >Tiempo estimado: Horas (para 1,000 imágenes)
-  
-  >Conversión del modelo
-  >Utilizar la herramienta de Luxonis para convertir modelos YOLO a formato compatible con la cámara.
-  
-  >Ejemplos disponibles en la documentación de Luxonis.
-  
-  >Control de movimiento
-  >Controlador principal: Spike Prime Hub
-  
-  >Kit robótico con motores y sensores
-  
-  ## Funciones clave:
-  
-  >Control de motores
-  
-  >Giroscopio interno para navegación
-  
-  >Integración con sensores ultrasónicos
-  
-  >Unidad central de procesamiento
-  >Raspberry Pi 5
-  
-  >Procesa datos de la cámara
-  
-  >Ejecuta la lógica principal del robot
-  
-  >Comunica instrucciones al Spike Prime via:
-  
-  >USB
-  
-  >Protocolo serie personalizado
-  
+# Introducción
+Este repositorio contiene todo el historial para construir un vehículo autónomo para la categoría **WRO Future Engineers**.
 
+# Lista de materiales para construir tu robot
+
+  - Spike Prime hub
+
+  - Raspberry Pi 5
+
+  - Raspberry Pi AI HAT+
+
+  - Cámara Módulo 3 Raspberry Pi - 12 Mp Gran Angular
+
+  - RPLidar A1
+
+  - 3 sensores TOF modelo VL53L1X
+
+
+> **Nota:** Para ver el modelo 3D del robot, instala Studio desde el siguiente enlace https://www.bricklink.com/v3/studio/download.page  
+El modelo se encuentra en la ruta `/Robot 3D model`
+
+# Resumen
+
+El Lidar se utiliza para detectar los límites en el campo de juego.  
+
+Una cámara se utiliza para reconocer los semáforos en el campo. La cámara y el AI HAT de Raspberry Pi se combinan para procesar las imágenes y detectar los semáforos. El modelo de detección de objetos usado es **yolov8n**.  
+
+Para entrenar el modelo Yolov8, se necesita un conjunto de datos de imágenes. Para ello, tomamos varias imágenes del campo de juego y, posteriormente, etiquetamos las imágenes con los objetos a detectar. El etiquetado se realizó usando **Label-Studio**, que permite exportar las imágenes en diferentes formatos para el procesamiento de imágenes; en nuestro caso, en formato **Yolo8**. Una vez generado, el modelo puede entrenarse usando los siguientes pasos en Google Colab:  
+https://colab.research.google.com/github/luxonis/depthai-ml-training/blob/master/colab-notebooks/YoloV8_training.ipynb#scrollTo=91Z_AtMyvrId  
+
+Colab ofrece GPUs para acelerar el entrenamiento del modelo; este proceso puede tardar varias horas dependiendo de la cantidad de imágenes. En nuestro caso, usamos **1000 imágenes**.  
+
+Una vez finalizado el entrenamiento, necesitamos ejecutar el modelo en el sistema operativo de la Raspberry Pi 5. El AI HAT de Raspberry Pi utiliza el **acelerador HAILO** para optimizar el procesamiento de detección de imágenes con diferentes modelos de detección de objetos como YOLO. Para ejecutar un modelo YOLO personalizado en el acelerador HAILO, es necesario convertir nuestro modelo **ONNX** al formato **HEF**. Los pasos para hacerlo se encuentran en el siguiente enlace:  
+https://www.cytron.io/tutorial/raspberry-pi-ai-kit-onnx-to-hef-conversion?srsltid=AfmBOoo8RtAYAU1g-JS7Basru8lXYtfCQZbNn-Md9rvm77fqVix72JHy  
+
+Para controlar los movimientos del robot, se utiliza un **Spike Prime hub**. Spike Prime es un kit de robótica que ofrece una variedad de motores y sensores que pueden ser controlados por un HUB principal. Decidimos controlar los movimientos del robot usando este kit de robótica. Para conectar la Raspberry Pi al SPIKE HUB, se realiza una **comunicación serial**. Primero, el Spike Prime hub se configura en **modo intérprete**. Posteriormente, la Raspberry Pi puede enviar comandos a través de la conexión USB para controlar los motores y realizar la navegación en el campo de juego.  
+
+La computadora central que controla la lógica del robot es la **Raspberry Pi 5**, la cual recopila los datos de la cámara, los puntos del Lidar y el Spike Prime hub.
