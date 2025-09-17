@@ -1,16 +1,25 @@
+# Introduction
 This Repository contains all the history to build an autonomous vehicle for the WRO Future Engineers category
 
-list of material to build your robot
+# list of material to build your robot
 
-Spike Prime hub
-Raspberry Pi5 
-Raspberry Pi AI HAT+
-Cámara Módulo 3 Raspberry Pi - 12 Mp Gran Angular
-RPLidar A1
-3 TOF sensor model VL53L1X
+  - Spike Prime hub
 
-To see the Robot 3D model, please install Studio from the following link https://www.bricklink.com/v3/studio/download.page
+  - Raspberry Pi5
+
+  - Raspberry Pi AI HAT+
+
+  - Cámara Módulo 3 Raspberry Pi - 12 Mp Gran Angular
+
+  - RPLidar A1
+
+  - 3 TOF sensor model VL53L1X
+
+
+> **Note:** To see the Robot 3D model, please install Studio from the following link https://www.bricklink.com/v3/studio/download.page
 The model is on the path /Robot 3D model
+
+# Summary
 
 The Lidar is used to detect boundaries on the game field.
 
